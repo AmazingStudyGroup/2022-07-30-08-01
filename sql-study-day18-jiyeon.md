@@ -129,7 +129,10 @@ CREATE INDEX IDX_EMPIDX_EMPNO
 SELECT * FROM USER_IND_COLUMNS;
 
 -- Q2
--- 문제1번에서 생성한 EMPIDX 테이블의 데이터 중 급여(SAL)가 1500 초과인 사원들만 출력하는 EMPIDX_OVER15K 뷰를 생성해보세요. 이 이름을 가진 뷰가 이미 존재할 경우에 새로운 내용으로 대체 가능해야 합니다. EMPIDX_OVER15K 뷰는 사원 번호, 사원 이름, 직책, 부서 번호, 급여, 추가 수당 열을 가지고 있습니다. 추가 수당 열의 경우에 추가 수당이 존재하면 O, 존재하지 않으면 X로 출력합니다.    
+-- 문제1번에서 생성한 EMPIDX 테이블의 데이터 중 급여(SAL)가 1500 초과인 사원들만 출력하는 EMPIDX_OVER15K 뷰를 생성해보세요. 
+-- 이 이름을 가진 뷰가 이미 존재할 경우에 새로운 내용으로 대체 가능해야 합니다. 
+-- EMPIDX_OVER15K 뷰는 사원 번호, 사원 이름, 직책, 부서 번호, 급여, 추가 수당 열을 가지고 있습니다. 
+-- 추가 수당 열의 경우에 추가 수당이 존재하면 O, 존재하지 않으면 X로 출력합니다.    
 CREATE OR REPLACE VIEW EMPIDX_OVER15K
   AS (SELECT EMPNO, ENAME, JOB, DEPTNO, SAL, NVL2(COMM, 'O', 'X') AS COMM
         FROM EMPIDX
